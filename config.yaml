@@ -1,0 +1,12 @@
+---
+irc:
+  server: "irc.freenode.net"
+  port: 6667
+  nick: "donburi"
+
+http:
+  server: "127.0.0.1"
+  port: 8080
+
+tmpl_path: "./tmpl/"
+store: "./channel.txt"
