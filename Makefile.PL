@@ -5,10 +5,19 @@ name 'Donburi';
 all_from 'lib/Donburi.pm';
 install_script 'donburi';
 
-# requires '';
-# requires 'Exporter' => 5.63; # use Exporter 'import';
-# requires 'Plack' =>  0.9949;
-
+requires 'parent';
+requires 'Exporter' => 5.36;
+requires 'Plack::Request';
+requires 'AnyEvent';
+requires 'AnyEvent::IRC::Client';
+requires 'String::CamelCase';
+requires 'Scope::Container';
+requires 'Router::Simple';
+requires 'YAML';
+requires 'Text::Xslate';
+requires 'Twiggy::Server';
+requires 'Class::Accessor::Lite';
+requires 'Class::Load';
 
 
 tests 't/*.t t/*/*.t t/*/*/*.t t/*/*/*/*.t';

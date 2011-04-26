@@ -20,7 +20,19 @@ no_index:
     - t
     - xt
 requires:
-  perl: 5.8.1
+  AnyEvent: 0
+  AnyEvent::IRC::Client: 0
+  Class::Accessor::Lite: 0
+  Class::Load: 0
+  Exporter: 5.36
+  Plack::Request: 0
+  Router::Simple: 0
+  Scope::Container: 0
+  String::CamelCase: 0
+  Text::Xslate: 0
+  Twiggy::Server: 0
+  YAML: 0
+  parent: 0
 resources:
   license: http://dev.perl.org/licenses/
 version: 0.01

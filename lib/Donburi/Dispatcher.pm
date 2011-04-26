@@ -3,8 +3,8 @@ use strict;
 use warnings;
 
 use Router::Simple;
-use UNIVERSAL::require;
 use Plack::Request;
+use Class::Load qw/load_class/;
 
 sub new {
     my $class = shift;
@@ -22,7 +22,7 @@ sub dispatch {
     if ( my $p = $self->{router}->match($env) ) {
         my $c = "Donburi::Web::C::" . $p->{controller};
         my $action = 'do_' . $p->{action};
-        $c->use or die $@;
+        load_class($c);
         my $req = Plack::Request->new($env);
         my $ci = $c->new(req => $req);
         my $res = $ci->$action;
