@@ -43,7 +43,7 @@ sub auto_render {
 sub redirect {
     my ( $self, $path ) = @_;
 
-    return [ 301, ['Location' => $path ], [''] ];
+    return [ 302, ['Location' => $path ], [''] ];
 }
 
 1;

@@ -23,7 +23,7 @@
 : for $channels -> $channel {
     <tr>
           <td><: $channel :></td>
-          <td><input type="submit" value="delete"></td>
+          <td><a href="/channel/delete?channel=<: $channel | uri :>">delete</a></td>
     </tr>
 : } 
     <tr>

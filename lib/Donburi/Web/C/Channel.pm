@@ -24,4 +24,16 @@ sub do_add {
     return $self->redirect('/channel/');
 }
 
+sub do_delete {
+    my $self = shift;
+
+    my $store = store();
+    my $chan  = $self->req->param('channel');
+
+    store([grep { $chan ne $_ } @$store]);
+    irc()->send_srv("PART", $chan);
+
+    return $self->redirect('/channel/');
+}
+
 1;

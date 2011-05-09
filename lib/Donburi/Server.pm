@@ -69,7 +69,7 @@ sub run {
     });
 
     $SIG{INT} = sub {
-        YAML::DumpFile($config->{store}, $store);
+        YAML::DumpFile($config->{store}, scope_container('store'));
         exit;
     };
 

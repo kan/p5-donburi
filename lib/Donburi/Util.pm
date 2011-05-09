@@ -12,6 +12,15 @@ sub irc { scope_container('irc') }
 
 sub xslate { scope_container('xslate') }
 
-sub store { scope_container('store') }
+sub store { 
+    my $new_store = shift;
+
+    if ( $new_store ) {
+        scope_container('store', $new_store);
+        return $new_store;
+    } else {
+        return scope_container('store');
+    }
+}
 
 1;
