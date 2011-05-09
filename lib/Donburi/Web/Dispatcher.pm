@@ -12,6 +12,9 @@ sub new {
     my $router = Router::Simple->new();
     $router->connect('/', { controller => 'Root', action => 'index' });
     $router->connect('/post', { controller => 'Root', action => 'post' });
+    $router->connect('/channel/', { controller => 'Channel', action => 'index' });
+    $router->connect('/channel/add', { controller => 'Channel', action => 'add' });
+    $router->connect('/channel/delete', { controller => 'Channel', action => 'delete' });
 
     return bless { router => $router }, $class;
 }

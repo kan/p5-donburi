@@ -21,6 +21,7 @@
           <option value="<: $channel :>"><: $channel :></option>
 : } 
       </select>
+      <a href="/channel/">edit</a>
       <br />
       message:
       <input type="text" name="message" />

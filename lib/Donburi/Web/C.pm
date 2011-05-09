@@ -40,4 +40,10 @@ sub auto_render {
     return $self->render("$tmpl/$action.tx", $vars);
 }
 
+sub redirect {
+    my ( $self, $path ) = @_;
+
+    return [ 301, ['Location' => $path ], [''] ];
+}
+
 1;
