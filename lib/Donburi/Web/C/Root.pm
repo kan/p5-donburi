@@ -8,13 +8,14 @@ use Donburi::Util;
 sub do_index {
     my $self = shift;
 
-    return;
+    return { channels => store() };
 }
 
 sub do_post {
     my $self = shift;
 
-    irc()->send_chan('#kan', 'NOTICE', '#kan', $self->req->param('message'));
+    my $chan = $self->req->param('channel');
+    irc()->send_chan($chan, 'NOTICE', $chan, $self->req->param('message'));
 
     return;
 }

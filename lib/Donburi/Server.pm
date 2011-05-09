@@ -9,7 +9,7 @@ use YAML;
 use Text::Xslate;
 use Scope::Container;
 
-use Donburi::Dispatcher;
+use Donburi::Web::Dispatcher;
 
 sub run {
     my $conf = shift;
@@ -18,6 +18,14 @@ sub run {
 
     my $config = YAML::LoadFile($conf);
     scope_container('config', $config);
+
+    my $store;
+    if ( -e $config->{store} ) {
+        $store = YAML::LoadFile($config->{store});
+    } else {
+        $store = [];
+    }
+    scope_container('store', $store);
 
     my $tx = Text::Xslate->new(
         path      => ['.'],
@@ -43,8 +51,9 @@ sub run {
         $config->{irc}->{port},
         { nick => $config->{irc}->{nick} }
     );
-    $irc->send_srv("JOIN", '#kan');
-    $irc->send_chan('#kan', 'NOTICE', '#kan', 'hello');
+    for my $channel (@$store) {
+        $irc->send_srv("JOIN", $channel);
+    }
 
     scope_container('irc', $irc);
 
@@ -52,12 +61,17 @@ sub run {
         host => $config->{http}->{server},
         port => $config->{http}->{port},
     );
-    my $dispatcher = Donburi::Dispatcher->new;
+    my $dispatcher = Donburi::Web::Dispatcher->new;
     $twg->register_service(sub {
         my $env = shift;
 
         return $dispatcher->dispatch($env);
     });
+
+    $SIG{INT} = sub {
+        YAML::DumpFile($config->{store}, $store);
+        exit;
+    };
 
     $cv->recv;
     $irc->disconnect;

@@ -1,4 +1,4 @@
-package Donburi::Dispatcher;
+package Donburi::Web::Dispatcher;
 use strict;
 use warnings;
 

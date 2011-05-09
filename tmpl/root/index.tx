@@ -15,7 +15,16 @@
     <div>simple IRC post proxy</div>
 
     <form method="POST" action="/post">
+      channel:
+      <select name="channel">
+: for $channels -> $channel {
+          <option value="<: $channel :>"><: $channel :></option>
+: } 
+      </select>
+      <br />
+      message:
       <input type="text" name="message" />
+      <br />
       <input type="submit" value="POST" />
     </form>
 </body>

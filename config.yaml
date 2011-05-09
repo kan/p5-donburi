@@ -9,4 +9,4 @@ http:
   port: 8080
 
 tmpl_path: "./tmpl/"
-store: "./channel.txt"
+store: "./channel.yaml"
