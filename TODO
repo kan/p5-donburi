@@ -1,12 +1,5 @@
-/ 説明ページ
-/post IRCへ投稿
 /channel/ 対応チャンネル一覧(type=jsonでjson出力)
-/channel/add チャンネル追加(join)
-/channel/remove チャンネル削除(part)
 
-- 起動時にchannel.txtから読み込み
-- 終了時にchannel.txtに書き込み
-- join時にバージョンとか吐く
 - この辺で公開&リリース?
 - 応答plugin機構
 -- URL title view
