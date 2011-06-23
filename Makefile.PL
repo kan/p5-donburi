@@ -16,7 +16,7 @@ requires 'Router::Simple';
 requires 'YAML';
 requires 'Text::Xslate';
 requires 'Twiggy::Server';
-requires 'Class::Accessor::Lite';
+requires 'Class::Accessor::Lite' => 0.04;
 requires 'Class::Load';
 requires 'JSON';
 
