@@ -16,9 +16,18 @@ sub do_call {
 
     my $text = $params->{text};
     my $channel = $params->{channel};
-    unless ( $method eq 'channels' || defined $text && defined $channel && grep /^$method$/,qw( privmsg notice ) ) {
+    unless (
+        $method eq 'channels'
+        || defined $text && defined $channel && grep /^$method$/,
+        qw( privmsg notice )
+      )
+    {
         #TODO Handle error?
-        return [ 500, ['Content-Type' => 'application/json'], [JSON->new->utf8->encode({message => 'internal server error', code => 000})] ];
+        return [
+            500,
+            [ 'Content-Type' => 'application/json' ],
+            [ JSON->new->utf8->encode({ message => 'internal server error', code => 000 }) ]
+        ];
     }
 
     my $body;
@@ -33,7 +42,11 @@ sub do_call {
         $body = 'ok';
     }
 
-    return [ 200, ['Content-Type' => 'application/json'], [JSON->new->utf8->encode({json_rpc=> "2.0", result => $body})] ];
+    return [
+        200,
+        [ 'Content-Type' => 'application/json' ],
+        [ JSON->new->utf8->encode( { json_rpc => "2.0", result => $body } ) ]
+    ];
 }
 
 1;

@@ -25,6 +25,7 @@ Donburi is
 =head1 AUTHOR
 
 Kan Fushihara E<lt>kan dot fushihara at gmail dot comE<gt>
+Nishibayashi Takuji E<lt>takuji {at} senchan.jpE<gt>
 
 =head1 SEE ALSO
 
