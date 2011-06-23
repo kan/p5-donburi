@@ -18,6 +18,7 @@ set_spell_cmd($spell_cmd);
 all_pod_files_spelling_ok('lib');
 __DATA__
 Kan Fushihara
+Nishibayashi Takuji
 kan@mfac.jp
 donburi
 fushihara

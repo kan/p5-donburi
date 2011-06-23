@@ -18,6 +18,7 @@ requires 'Text::Xslate';
 requires 'Twiggy::Server';
 requires 'Class::Accessor::Lite';
 requires 'Class::Load';
+requires 'JSON';
 
 
 tests 't/*.t t/*/*.t t/*/*/*.t t/*/*/*/*.t';
