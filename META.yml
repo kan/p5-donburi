@@ -22,7 +22,7 @@ no_index:
 requires:
   AnyEvent: 0
   AnyEvent::IRC::Client: 0
-  Class::Accessor::Lite: 0
+  Class::Accessor::Lite: 0.04
   Class::Load: 0
   Exporter: 5.36
   JSON: 0

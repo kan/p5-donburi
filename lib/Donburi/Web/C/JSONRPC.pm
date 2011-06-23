@@ -37,7 +37,7 @@ sub do_call {
         my $mode = uc $method;
         my @line = split /[\r\n]+/, $text;
         for my $msg ( @line ) {
-            irc()->send_chan($channel, $mode, $channel, $msg);
+            send_chan($channel, $mode, $channel, $msg);
         }
         $body = 'ok';
     }

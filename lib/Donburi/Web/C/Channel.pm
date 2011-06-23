@@ -18,7 +18,7 @@ sub do_add {
     my $chan  = $self->req->param('channel');
     unless ( !$chan || grep { $chan eq $_ } @$store ) {
         push @$store, $chan;
-        irc()->send_srv("JOIN", $chan);
+        send_srv("JOIN", $chan);
     }
 
     return $self->redirect('/channel/');
@@ -31,7 +31,7 @@ sub do_delete {
     my $chan  = $self->req->param('channel');
 
     store([grep { $chan ne $_ } @$store]);
-    irc()->send_srv("PART", $chan);
+    send_srv("PART", $chan);
 
     return $self->redirect('/channel/');
 }

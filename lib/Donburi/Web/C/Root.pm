@@ -15,7 +15,7 @@ sub do_post {
     my $self = shift;
 
     my $chan = $self->req->param('channel');
-    irc()->send_chan($chan, 'NOTICE', $chan, $self->req->param('message'));
+    send_chan($chan, 'NOTICE', $chan, $self->req->param('message'));
 
     return;
 }
