@@ -4,7 +4,6 @@ use warnings;
 
 use parent 'Donburi::Web::C';
 
-use Plack::Request;
 use JSON;
 
 use Donburi::Util;

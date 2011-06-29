@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 use Router::Simple;
-use Plack::Request;
+use Donburi::Web::Request;
 use Class::Load qw/load_class/;
 
 sub new {
@@ -27,7 +27,7 @@ sub dispatch {
         my $c = "Donburi::Web::C::" . $p->{controller};
         my $action = 'do_' . $p->{action};
         load_class($c);
-        my $req = Plack::Request->new($env);
+        my $req = Donburi::Web::Request->new($env);
         my $ci = $c->new(req => $req);
         my $res = $ci->$action;
         return $res && ref($res) eq 'ARRAY' ? $res : $ci->auto_render($p->{action}, $res);
@@ -38,7 +38,7 @@ sub dispatch {
 
 sub is_called_json_rpc {
     my ($env, $match) = @_;
-    my $req = Plack::Request->new($env);
+    my $req = Donburi::Web::Request->new($env);
     return defined $req->param('params') && defined $req->param('method');
 }
 

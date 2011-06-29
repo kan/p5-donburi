@@ -20,6 +20,8 @@ sub render {
 
     my $content = xslate()->render($tmpl, $vars);
 
+    utf8::encode($content);
+
     return [
         200,
         [   'Content-Type'   => 'text/html',
