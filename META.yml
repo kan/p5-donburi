@@ -25,8 +25,8 @@ requires:
   Class::Accessor::Lite: 0.04
   Class::Load: 0
   Exporter: 5.36
+  Hash::MultiValue: 0
   JSON: 0
-  Plack::Request: 0
   Router::Simple: 0
   Scope::Container: 0
   String::CamelCase: 0

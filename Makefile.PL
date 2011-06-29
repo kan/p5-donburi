@@ -7,7 +7,6 @@ install_script 'donburi';
 
 requires 'parent';
 requires 'Exporter' => 5.36;
-requires 'Plack::Request';
 requires 'AnyEvent';
 requires 'AnyEvent::IRC::Client';
 requires 'String::CamelCase';
@@ -19,6 +18,7 @@ requires 'Twiggy::Server';
 requires 'Class::Accessor::Lite' => 0.04;
 requires 'Class::Load';
 requires 'JSON';
+requires 'Hash::MultiValue';
 
 
 tests 't/*.t t/*/*.t t/*/*/*.t t/*/*/*/*.t';
