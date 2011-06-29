@@ -13,7 +13,7 @@ requires 'AnyEvent::IRC::Client';
 requires 'String::CamelCase';
 requires 'Scope::Container';
 requires 'Router::Simple';
-requires 'YAML';
+requires 'YAML::Syck';
 requires 'Text::Xslate';
 requires 'Twiggy::Server';
 requires 'Class::Accessor::Lite' => 0.04;

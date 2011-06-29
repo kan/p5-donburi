@@ -5,23 +5,25 @@ use warnings;
 use Twiggy::Server;
 use AnyEvent;
 use AnyEvent::IRC::Client;
-use YAML;
+use YAML::Syck;
 use Text::Xslate;
 use Scope::Container;
+use Encode ();
 
 use Donburi::Web::Dispatcher;
 
 sub run {
     my $conf = shift;
 
+    local $YAML::Syck::ImplicitUnicode = 1;
     my $container = start_scope_container();
 
-    my $config = YAML::LoadFile($conf);
+    my $config = YAML::Syck::LoadFile($conf);
     scope_container('config', $config);
 
     my $store;
     if ( -e $config->{store} ) {
-        $store = YAML::LoadFile($config->{store});
+        $store = YAML::Syck::LoadFile($config->{store});
     } else {
         $store = [];
     }
@@ -52,7 +54,7 @@ sub run {
         { nick => $config->{irc}->{nick} }
     );
     for my $channel (@$store) {
-        $irc->send_srv("JOIN", $channel);
+        $irc->send_srv("JOIN", Encode::encode($config->{irc}->{encoding} || 'utf-8',$channel));
     }
 
     scope_container('irc', $irc);
@@ -69,7 +71,11 @@ sub run {
     });
 
     $SIG{INT} = sub {
-        YAML::DumpFile($config->{store}, scope_container('store'));
+        my $yaml = YAML::Syck::Dump(scope_container('store'));
+        utf8::encode($yaml);
+        open my $fh, '>' , $config->{store};
+        print $fh $yaml;
+        close $fh;
         exit;
     };
 

@@ -25,11 +25,12 @@ sub store {
 }
 
 sub send_chan {
-    my ($channel, $mode, $channel, $msg) = @_;
+    my ($channel1, $mode, $channel2, $msg) = @_;
     my $enc = conf()->{irc}->{encoding} || 'utf-8';
-    $channel = Encode::encode($enc, $channel);
+    $channel1 = Encode::encode($enc, $channel1);
+    $channel2 = Encode::encode($enc, $channel2);
     $msg = Encode::encode($enc, $msg);
-    irc()->send_chan($channel, $mode, $channel, $msg);
+    irc()->send_chan($channel1, $mode, $channel2, $msg);
 
 }
 

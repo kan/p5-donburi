@@ -32,7 +32,7 @@ requires:
   String::CamelCase: 0
   Text::Xslate: 0
   Twiggy::Server: 0
-  YAML: 0
+  YAML::Syck: 0
   parent: 0
 resources:
   license: http://dev.perl.org/licenses/
