@@ -1,4 +1,4 @@
-package  Donburi::Web::Request;
+package App::Donburi::Web::Request;
 use strict;
 use warnings;
 

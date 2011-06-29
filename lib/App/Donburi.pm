@@ -1,4 +1,4 @@
-package Donburi;
+package App::Donburi;
 use strict;
 use warnings;
 our $VERSION = '0.01';
@@ -16,7 +16,7 @@ Donburi -
 
 =head1 SYNOPSIS
 
-  use Donburi;
+  use App::Donburi;
 
 =head1 DESCRIPTION
 

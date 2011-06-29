@@ -1,4 +1,4 @@
-package Donburi::Util;
+package App::Donburi::Util;
 use strict;
 use warnings;
 use Exporter 'import';

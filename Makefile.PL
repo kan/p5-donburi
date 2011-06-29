@@ -1,8 +1,9 @@
 use inc::Module::Install;
 use Module::Install::AuthorTests;
 
-name 'Donburi';
-all_from 'lib/Donburi.pm';
+name 'App-Donburi';
+all_from 'lib/App/Donburi.pm';
+install_share 'tmpl';
 install_script 'donburi';
 
 requires 'parent';
@@ -19,6 +20,7 @@ requires 'Class::Accessor::Lite' => 0.04;
 requires 'Class::Load';
 requires 'JSON';
 requires 'Hash::MultiValue';
+requires 'File::ShareDir';
 
 
 tests 't/*.t t/*/*.t t/*/*/*.t t/*/*/*/*.t';

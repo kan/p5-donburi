@@ -9,5 +9,4 @@ http:
   server: "127.0.0.1"
   port: 8080
 
-tmpl_path: "./tmpl/"
 store: "./channel.yaml"

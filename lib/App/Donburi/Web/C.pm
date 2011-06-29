@@ -1,8 +1,8 @@
-package Donburi::Web::C;
+package App::Donburi::Web::C;
 use strict;
 use warnings;
 
-use Donburi::Util;
+use App::Donburi::Util;
 use String::CamelCase qw/decamelize/;
 
 use Class::Accessor::Lite (
@@ -34,10 +34,8 @@ sub render {
 sub auto_render {
     my ( $self, $action, $vars ) = @_;
 
-    ( my $class = ref($self) ) =~ s/^Donburi::Web::C:://;
-    my $tmpl = join( '/',
-        conf()->{tmpl_path},
-        map { decamelize($_) } split( '::', $class ) );
+    ( my $class = ref($self) ) =~ s/^@{[__PACKAGE__]}:://;
+    my $tmpl = join( '/', map { decamelize($_) } split( '::', $class ) );
 
     return $self->render("$tmpl/$action.tx", $vars);
 }

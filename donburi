@@ -3,9 +3,9 @@ use strict;
 use warnings;
 use opts;
 
-use Donburi::Server;
+use App::Donburi::Server;
 
 opts my $conf => { isa => 'Str', default => 'config.yaml', comment => 'config file' };
 
-Donburi::Server::run($conf);
+App::Donburi::Server::run($conf);
 

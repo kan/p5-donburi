@@ -1,4 +1,4 @@
-package Donburi::Server;
+package App::Donburi::Server;
 use strict;
 use warnings;
 
@@ -8,9 +8,10 @@ use AnyEvent::IRC::Client;
 use YAML::Syck;
 use Text::Xslate;
 use Scope::Container;
+use File::ShareDir;
 use Encode ();
 
-use Donburi::Web::Dispatcher;
+use App::Donburi::Web::Dispatcher;
 
 sub run {
     my $conf = shift;
@@ -29,8 +30,11 @@ sub run {
     }
     scope_container('store', $store);
 
+    my $tmpl_dir = $config->{tmpl_path} ||
+                       File::ShareDir::dist_dir('App-Donburi');
+
     my $tx = Text::Xslate->new(
-        path      => ['.'],
+        path      => [$tmpl_dir],
         cache_dir => '/tmp/.donburi',
         cache     => 1,
     );
@@ -63,7 +67,7 @@ sub run {
         host => $config->{http}->{server},
         port => $config->{http}->{port},
     );
-    my $dispatcher = Donburi::Web::Dispatcher->new;
+    my $dispatcher = App::Donburi::Web::Dispatcher->new;
     $twg->register_service(sub {
         my $env = shift;
 

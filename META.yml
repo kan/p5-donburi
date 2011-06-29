@@ -13,11 +13,12 @@ license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
-name: Donburi
+name: App-Donburi
 no_index:
   directory:
     - inc
     - t
+    - tmpl
     - xt
 requires:
   AnyEvent: 0
@@ -25,6 +26,7 @@ requires:
   Class::Accessor::Lite: 0.04
   Class::Load: 0
   Exporter: 5.36
+  File::ShareDir: 0
   Hash::MultiValue: 0
   JSON: 0
   Router::Simple: 0

@@ -1,12 +1,12 @@
-package Donburi::Web::C::JSONRPC;
+package App::Donburi::Web::C::JSONRPC;
 use strict;
 use warnings;
 
-use parent 'Donburi::Web::C';
+use parent 'App::Donburi::Web::C';
 
 use JSON;
 
-use Donburi::Util;
+use App::Donburi::Util;
 
 sub do_call {
     my $self = shift;

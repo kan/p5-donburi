@@ -1,9 +1,9 @@
-package Donburi::Web::C::Channel;
+package App::Donburi::Web::C::Channel;
 use strict;
 use warnings;
-use parent 'Donburi::Web::C';
+use parent 'App::Donburi::Web::C';
 
-use Donburi::Util;
+use App::Donburi::Util;
 
 sub do_index {
     my $self = shift;
