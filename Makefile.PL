@@ -21,7 +21,7 @@ requires 'Class::Load';
 requires 'JSON';
 requires 'Hash::MultiValue';
 requires 'File::ShareDir';
-
+requires 'opts';
 
 tests 't/*.t t/*/*.t t/*/*/*.t t/*/*/*/*.t';
 test_requires 'Test::More' => 0.96; # done_testing, subtest
