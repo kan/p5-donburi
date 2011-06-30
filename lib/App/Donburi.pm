@@ -12,15 +12,16 @@ __END__
 
 =head1 NAME
 
-Donburi -
+Donburi - Web to IRC Gateway
 
 =head1 SYNOPSIS
 
-  use App::Donburi;
+  cpanm App::Donburi
+  donburi
 
 =head1 DESCRIPTION
 
-Donburi is
+Donburi is Web to IRC Gateway.
 
 =head1 AUTHOR
 
