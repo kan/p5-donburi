@@ -12,7 +12,7 @@ __END__
 
 =head1 NAME
 
-Donburi - Web to IRC Gateway
+App::Donburi - Web to IRC Gateway
 
 =head1 SYNOPSIS
 
