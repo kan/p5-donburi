@@ -23,3 +23,4 @@ kan@mfac.jp
 donburi
 fushihara
 gmail
+IRC
