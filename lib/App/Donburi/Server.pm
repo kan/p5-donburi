@@ -12,6 +12,7 @@ use File::ShareDir;
 use Encode ();
 
 use App::Donburi::Web::Dispatcher;
+use App::Donburi::Logger;
 
 sub run {
     my $conf = shift;
@@ -40,16 +41,30 @@ sub run {
     );
     scope_container('xslate', $tx);
 
+    my $logger = App::Donburi::Logger->new();
+    scope_container('logger', $logger);
+
     my $cv = AnyEvent->condvar;
     my $irc = AnyEvent::IRC::Client->new;
     $irc->reg_cb(
         connect => sub {
             my ($irc, $err) = @_;
             if (defined $err) {
-                warn "connect error: $err\n";
+                $logger->warn("connect error: $err\n");
                 $cv->send;
             }
         },
+        registered => sub {
+            $logger->info("Registered");
+        },
+        disconnect => sub {
+            $logger->info("Disconnected");
+        },
+        error => sub {
+            my ($irc, $code, $message, $ircmsg) = @_;
+            use Data::Dumper; warn Dumper($ircmsg);
+            $logger->crit("$code $message");
+        }
     );
 
     $irc->connect(
@@ -82,6 +97,8 @@ sub run {
         close $fh;
         exit;
     };
+
+    $logger->info("Web interface is here: http://%s:%s/", $config->{http}->{server}, $config->{http}->{port});
 
     $cv->recv;
     $irc->disconnect;
