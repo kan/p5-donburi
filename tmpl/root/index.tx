@@ -28,6 +28,14 @@
       <br />
       <input type="submit" value="POST" />
     </form>
+
+    <hr />
+    <h2>Logs</h2>
+     <ul>
+: for $logs -> $log {
+        <li><: $log :></li>
+: }
+    </ul>
 </body>
 
 </html>
