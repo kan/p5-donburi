@@ -1,7 +1,7 @@
 package App::Donburi;
 use strict;
 use warnings;
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 
