@@ -8,7 +8,7 @@ use App::Donburi::Util;
 sub do_index {
     my $self = shift;
 
-    return { channels => store() };
+    return { channels => store(), logs => [reverse @{logger()->logs()}] };
 }
 
 sub do_post {
