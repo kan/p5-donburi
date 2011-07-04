@@ -12,3 +12,5 @@ tags
 blib
 pm_to_blib
 channel.yaml
+config.yaml
+META.yml

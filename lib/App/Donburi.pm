@@ -1,7 +1,7 @@
-package Donburi;
+package App::Donburi;
 use strict;
 use warnings;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 
@@ -12,19 +12,21 @@ __END__
 
 =head1 NAME
 
-Donburi -
+App::Donburi - Web to IRC Gateway
 
 =head1 SYNOPSIS
 
-  use Donburi;
+  cpanm App::Donburi
+  donburi
 
 =head1 DESCRIPTION
 
-Donburi is
+Donburi is Web to IRC Gateway.
 
 =head1 AUTHOR
 
 Kan Fushihara E<lt>kan dot fushihara at gmail dot comE<gt>
+Nishibayashi Takuji E<lt>takuji {at} senchan.jpE<gt>
 
 =head1 SEE ALSO
 
