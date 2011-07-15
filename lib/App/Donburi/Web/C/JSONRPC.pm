@@ -11,7 +11,7 @@ use App::Donburi::Util;
 sub do_call {
     my $self = shift;
     my $method = $self->req->param('method');
-    my $params = JSON->new->utf8->decode($self->req->param('params') || {});
+    my $params = JSON->new->utf8(0)->decode($self->req->param('params'));
 
     my $text = $params->{text};
     my $channel = $params->{channel};
