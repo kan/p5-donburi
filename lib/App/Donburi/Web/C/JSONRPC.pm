@@ -7,11 +7,19 @@ use parent 'App::Donburi::Web::C';
 use JSON;
 
 use App::Donburi::Util;
+use MIME::Base64;
 
 sub do_call {
     my $self = shift;
     my $method = $self->req->param('method');
-    my $params = JSON->new->utf8(0)->decode($self->req->param('params'));
+    my $query  = $self->req->param('params');
+    my $params;
+    eval{
+        $params = JSON->new->utf8(0)->decode($query);
+    };
+    if ( $@ ) {
+        $params = JSON->new->utf8(0)->decode(decode_base64($query));
+    }
 
     my $text = $params->{text};
     my $channel = $params->{channel};

@@ -20,6 +20,7 @@ requires 'Class::Accessor::Lite' => 0.04;
 requires 'Class::Load';
 requires 'JSON';
 requires 'Hash::MultiValue';
+requires 'MIME::Base64';
 requires 'File::ShareDir';
 requires 'opts';
 
