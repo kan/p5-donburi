@@ -13,6 +13,7 @@ sub new {
     $router->connect('/', { controller => 'JSONRPC', action => 'call' }, {on_match => \&is_called_json_rpc});
     $router->connect('/', { controller => 'Root', action => 'index' });
     $router->connect('/post', { controller => 'Root', action => 'post' });
+    $router->connect('/privmsg_post', { controller => 'Root', action => 'privmsg_post' });
     $router->connect('/channel/', { controller => 'Channel', action => 'index' });
     $router->connect('/channel/add', { controller => 'Channel', action => 'add' });
     $router->connect('/channel/delete', { controller => 'Channel', action => 'delete' });

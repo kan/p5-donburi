@@ -20,4 +20,13 @@ sub do_post {
     return;
 }
 
+sub do_privmsg_post {
+    my $self = shift;
+
+    my $user = $self->req->param('user');
+    send_privmsg($user => $self->req->param('message'));
+
+    return;
+}
+
 1;

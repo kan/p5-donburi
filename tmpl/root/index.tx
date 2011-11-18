@@ -35,6 +35,7 @@
 
     <div id="desc">simple IRC post proxy</div>
 
+    <h2>Channel post</h2>
     <form method="POST" action="/post">
       <table>
       <tr>
@@ -51,6 +52,30 @@
       <th>message</th>
       <td>
       <input type="text" name="message" />
+      </td>
+      </tr>
+      <tr>
+      <td colspan="2">
+      <input type="submit" value="POST" />
+      </td>
+      </tr>
+      </table>
+    </form>
+
+    <br />
+
+    <h2>Private message</h2>
+    <form method="POST" action="/privmsg_post">
+      <table>
+      <tr>
+      <th>User</th>
+      <td>
+        <input type="text" name="user" />
+      </td>
+      </tr>
+      <th>message</th>
+      <td>
+        <input type="text" name="message" />
       </td>
       </tr>
       <tr>

@@ -2,7 +2,7 @@ package App::Donburi::Util;
 use strict;
 use warnings;
 use Exporter 'import';
-our @EXPORT = qw(conf irc xslate logger store send_chan send_srv);
+our @EXPORT = qw(conf irc xslate logger store send_chan send_privmsg send_srv);
 
 use Scope::Container;
 use Encode ();
@@ -34,6 +34,17 @@ sub send_chan {
     $msg = Encode::encode($enc, $msg);
     irc()->send_chan($channel1, $mode, $channel2, $msg);
 
+}
+
+sub send_privmsg {
+    my ($user, $msg) = @_;
+    my $enc = conf()->{irc}->{encoding} || 'utf-8';
+    $user = Encode::encode($enc, $user);
+    $msg  = Encode::encode($enc, $msg);
+    irc()->send_srv (
+        PRIVMSG => $user,
+        $msg
+    );
 }
 
 sub send_srv {
