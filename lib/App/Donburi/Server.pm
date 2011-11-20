@@ -97,6 +97,9 @@ sub run {
         close $fh;
         $logger->info("save channels");
     };
+    my $timer = AnyEvent->timer(after => 10, interval => 60, cb => sub {
+        $save_channels->();
+    });
     $SIG{INT} = sub {
         $save_channels->();
         exit;
