@@ -89,12 +89,20 @@ sub run {
         return $dispatcher->dispatch($env);
     });
 
-    $SIG{INT} = sub {
+    my $save_channels = sub {
         my $yaml = YAML::Syck::Dump(scope_container('store'));
         utf8::encode($yaml);
         open my $fh, '>' , $config->{store};
         print $fh $yaml;
         close $fh;
+        $logger->info("save channels");
+    };
+    $SIG{INT} = sub {
+        $save_channels->();
+        exit;
+    };
+    $SIG{TERM} = sub {
+        $save_channels->();
         exit;
     };
 
